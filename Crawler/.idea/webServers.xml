@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7b72dc9c-4a09-41d5-9d5e-deccc84ecacd" name="ssossotable">
+        <fileTransfer accessType="SFTP" host="18.117.197.254" port="22" sshConfigId="10b26bc9-d956-46f8-b5e0-486395c0d02c" sshConfig="ubuntu@18.117.197.254:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
