@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head.ejs') %>
+    <%- include('header.ejs') %>
+    <script>
+        let before = -1
+        function check(idx) {
+            const list_group = document.getElementById('list-group').children
+            if(before === -1) {
+                list_group[idx].classList.add('active')
+                before = idx
+            }
+            else {
+                list_group[before].classList.remove('active')
+                list_group[idx].classList.add('active')
+                before = idx
+            }
+        }
+        function submit() {
+            if (before === -1) {
+                alert('정답을 선택 해 주세요')
+                return
+            }
+            const form = document.createElement("form");
+            form.setAttribute("charset", "UTF-8");
+            form.setAttribute("method", "POST");  //Post 방식
+            form.setAttribute("action", "<%=next %>"); //요청 보낼 주소
+
+            const hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "answer");
+            hiddenField.setAttribute("value", before);
+            form.appendChild(hiddenField);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+<main class="px-3 d-flex">
+    <div class="card">
+        <img src="<%=image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">이름이 뭘까요?</h5>
+        </div>
+        <ul id="list-group" class="list-group list-group-flush">
+            <li class="list-group-item" onclick="check(0)">
+                <%=_a1 %>
+            </li>
+            <li class="list-group-item" onclick="check(1)">
+                <%=_a2 %>
+            </li>
+            <li class="list-group-item" onclick="check(2)">
+                <%=_a3 %>
+            </li>
+        </ul>
+        <div class="card-body">
+            <input onclick="submit()" type="button" class="btn btn-primary" value="넘어가기">
+        </div>
+    </div>
+</main>
+<%- include('footer.ejs') %>
+</body>
+</html>

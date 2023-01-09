@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head.ejs') %>
+    <%- include('header.ejs') %>
+</head>
+<body>
+<main class="px-3 d-flex">
+    <div class="card">
+        <h3>1번 문제</h3>
+        <img src="/img/s.jpeg" class="card-img-top" alt="...">
+        <p id="result-1"></p>
+
+        <h3>2번 문제</h3>
+        <img src="/img/d.jpeg" class="card-img-top" alt="...">
+        <p id="result-2"></p>
+
+        <h3>3번 문제</h3>
+        <img src="/img/m.jpeg" class="card-img-top" alt="...">
+        <p id="result-3"></p>
+        <div class="card-body">
+            <a href="/" class="btn btn-primary">다시 하기</a>
+        </div>
+    </div>
+</main>
+<%- include('footer.ejs') %>
+
+<script>
+    const a1 = '<%=_a1 %>'
+    const a2 = '<%=_a2 %>'
+    const a3 = '<%=_a3 %>'
+    if(parseInt(a1) === 1) {
+        document.getElementById('result-1').innerHTML = '정답이에요!'
+    }
+    else {
+        document.getElementById('result-1').innerHTML = '틀렸어요...<br>정답은 삼색이에요...'
+    }
+    if(parseInt(a2) === 1) {
+        document.getElementById('result-2').innerHTML = '정답이에요!'
+    }
+    else {
+        document.getElementById('result-2').innerHTML = '틀렸어요...<br>정답은 도도에요...'
+    }
+    if(parseInt(a3) === 1) {
+        document.getElementById('result-3').innerHTML = '정답이에요!'
+    }
+    else {
+        document.getElementById('result-3').innerHTML = '틀렸어요...<br>정답은 Marilyn이에요...'
+    }
+</script>
+</body>
+</html>
