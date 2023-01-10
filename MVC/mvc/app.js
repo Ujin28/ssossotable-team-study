@@ -15,11 +15,7 @@ app.set('view engine', 'ejs'); //view engine이 사용할 Template Engine
 app.set('views', path.join(__dirname, 'views')); // Template가 있는 디렉토리
 
 // public 폴더에 대한 보안 해제(사용가능)
-app.use(express.static('public'));
-
-// post 데이터 인코딩
-app.use(express.json());
-app.use(express.urlencoded( {extended : true } ));
+app.use(express.static('public'))
 
 // 기본 경로 라우팅
 app.get('/', (req, res) => {
