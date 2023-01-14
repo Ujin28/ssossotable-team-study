@@ -1,46 +1,49 @@
-// 환경변수 사용
-require("dotenv").config();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+// MART: 쿠키파싱 미들웨어
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-const express = require('express')
-const path = require("path");
-const app = express()
-const port = process.env.PORT || 3000
-const fs = require('fs/promises')
+/** MARK: 라우터 객체 **/
+const indexRouter = require('./routes/index');
+const mainRouter = require('./routes/main')
+const contentRouter = require('./routes/content')
+const logoutRouter = require('./routes/logout')
 
-// data model
-const model = require('./model/app_model')
+const app = express();
 
-// ejs를 통한 mvc 모델 구현
-app.set('view engine', 'ejs'); //view engine이 사용할 Template Engine
-app.set('views', path.join(__dirname, 'views')); // Template가 있는 디렉토리
+/** MARK: 뷰 엔진 셋업(ejs 사용) **/
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-// public 폴더에 대한 보안 해제(사용가능)
-app.use(express.static('public'))
+/** MARK: 미들웨어 셋업 **/
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// 기본 경로 라우팅
-app.get('/', (req, res) => {
-    const page = 'index'
-    res.render('app', {
-        title_img: model[page].title_img,
-        title: model[page].title
-    });
-})
-// 페이지 라우팅
-app.get('/:page', (req, res) => {
-    const page = req.params.page
-    Object.keys(model).includes(page) ? res.render('app', { title_img: model[page].title_img, title: model[page].title }) : res.status(404).send('<h1>404 Not Found</h1>')
+/** MARK: 라우터 셋업 **/
+app.use('/', indexRouter);
+app.use('/main', mainRouter)
+app.use('/content', contentRouter)
+app.use('/logout', logoutRouter)
 
-})
-// 이미지 라우팅
-app.get('/img/:src', async (req,res) => {
-    res.end(await fs.readFile(__dirname + 'public/img/' + req.params.src))
-})
-// css 라우팅
-app.get('/css/:src', async (req,res) => {
-    res.end(await fs.readFile(__dirname + 'public/css/' + req.params.src))
-})
-    
-// 서버 구동
-app.listen(port, () => {
-    console.log(`mvc app listening on port ${port}`)
-})
+/** MARK: 404 에러 핸들링 **/
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+/** MARK: 에러 핸들링 **/
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
