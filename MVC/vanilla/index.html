@@ -8,38 +8,13 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand d-flex" href="index.html">
-            <div class="box">
-                <img src="img/logo.png" alt="소소식탁" class="box-img d-inline-block align-text-top">
-            </div>
-            <p style="margin: auto; padding: 0 0 0 10px;">MVC 예시(바닐라)</p>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="potato.html">감자</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tofu.html">두부</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="apple.html">사과</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <main class="d-flex flex-column" style="text-align: center; margin: auto;">
-    <div class="box card-img-top" style="width: 240px!important; height: 240px!important; margin: 50px auto 20px auto;">
-        <img src="img/logo.png" alt="소소식탁" class="box-img d-inline-block align-text-top">
+    <div class="input-group" style="margin:auto; padding:20px;">
+    <input type="text" class="form-control" placeholder="닉네임 입력">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" onClick="location.href = './main.html'">로그인</button>
     </div>
-    <h3 class="card-title">인덱스 페이지입니다</h3>
-    <p>상단 navbar를 통해 페이지를 이동해보세요</p>
+    </div>
 </main>
 <footer class="py-3 my-4 fixed-bottom" style="margin: auto;">
     <p class="text-center text-muted">&copy; 2022-2023 <a class="text-secondary" href="http://ssossotable.com">ssosso.table</a>, Inc</p>
