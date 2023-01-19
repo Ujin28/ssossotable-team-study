@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%-include('components/head.ejs', {title:title, path:path}) %>
+</head>
+<body>
+<main class="d-flex flex-column" style="text-align: center; margin: auto;">
+  <div class="input-group" style="margin:auto; padding:20px;">
+    <input type="text" id="user-id" class="form-control" placeholder="닉네임 입력">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" onClick="auth()">로그인</button>
+    </div>
+  </div>
+</main>
+<%-include('components/footer.ejs') %>
+</body>
+</html>
