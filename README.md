@@ -29,4 +29,4 @@
 
 ### 8. express-typescript
 - tyscript를 통한 express 앱 빌딩
-- 소소식탁 위키 가이드 
+- 소소식탁 위키 가이드 참조
