@@ -26,3 +26,7 @@
 
 ### 7. MVC
 - 푸비티아이 제작을 위한 node.js mvc 
+
+### 8. express-typescript
+- tyscript를 통한 express 앱 빌딩
+- 소소식탁 위키 가이드 
