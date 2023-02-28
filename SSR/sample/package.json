@@ -12,7 +12,7 @@
     "dev": "quasar dev -m ssr",
     "build": "quasar build -m ssr",
     "build:pwa": "quasar build -m pwa",
-    "start": "pm2 start dist/ssr/index.js"
+    "start": "pm2 start dist/ssr/index.js --watch"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
