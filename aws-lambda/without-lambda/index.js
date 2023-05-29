@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// MEMO: id: 'aa', password: 'bb' => token
+// MEMO: id: 'aa', password: 'aa' => token
 // MARK: db연동 없이 정적 사용자 정보 사용
 const userTable = [{
     userToken: '1132bddeedaa94c5ed1a9b33383cb293a9467a3d29d521bed993a98dd9b8a124',
