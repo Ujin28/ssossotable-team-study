@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<h3>id = aa<br>password = aa</h3>
+<h3 id="error"></h3>
+<input type="text" placeholder="id" id="id">
+<br>
+<input type="password" placeholder="password" id="password">
+<br>
+<input type="button" value="submit" id="submit">
+<script>
+    document.getElementById('submit').addEventListener('click',()=>{
+        axios.post('http://localhost:3000/', {
+            id: document.getElementById('id').value,
+            password: document.getElementById('password').value
+        })
+            .then((response) => {
+                switch (response.status) {
+                    case 201:
+                        location.href = 'main.html'
+                        return
+                    case 202:
+                        document.getElementById('error').innerHTML = 'wrong id or password'
+                        return;
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    })
+</script>
+</body>
+</html>
